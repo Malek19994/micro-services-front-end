@@ -9,6 +9,8 @@ import {HttpClient} from '@angular/common/http';
 export class EtudiantComponent implements OnInit {
 
   listFormations : any;
+  listEtudiants : any;
+  currentFormation ={id:-1};
 
   constructor(private httpClient:HttpClient) { }
 
@@ -21,5 +23,14 @@ export class EtudiantComponent implements OnInit {
         }
       )
   }
-
+  onGetEtufiant(f:any)
+  {
+    this.currentFormation=f;
+    this.httpClient.get("http://localhost:8080/formations/"+f.id+"/etudiants")
+      .subscribe(data=>{
+        this.listEtudiants=data;
+      },err => {
+        console.log(err);
+  });
+  }
 }

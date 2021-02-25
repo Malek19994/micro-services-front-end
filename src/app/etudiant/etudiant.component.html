@@ -1,13 +1,25 @@
-<table class="table">
-  <tr>
-    <th>ID</th>
-    <th>Nom</th>
-    <th>Dureé</th>
-  </tr>
-  <tr *ngFor="let f of listFormations['_embedded']['formations']">
-    <td>{{f.id}}</td>
-    <td>{{f.nom}}</td>
-    <td>{{f.duree}}</td>
-  </tr>
-</table>
+<div class="container" *ngIf="listFormations">
+  <div class="card shadow mb-5 border-primary">
+    <div class="card-header py-3 bg-primary">
+      <p class="text-white m-0 font-weight-bold">Liste Etudiants</p>
+    </div>
+    <div class="card-body">
+      <span *ngFor="let f of listFormations['_embedded']['formations']">
+        <button  (click)="onGetEtufiant(f)" [ngClass]="f.id==currentFormation.id?'btn btn-danger':'btn btn-primary'"> {{f.nom}}</button>&nbsp;
+      </span>
+      <p></p>
+      <table class="table" *ngIf="listEtudiants">
+        <tr>
+          <th>Nom</th><th>Prénom</th><th>Date de Naissance</th>
+        </tr>
+        <tr *ngFor="let e of listEtudiants['_embedded']['etudiants']">
+          <td>{{e.nom}}</td>
+          <td>{{e.prenom}}</td>
+          <td>{{e.dateNaissance}}</td>
+        </tr>
+      </table>
+    </div>
+</div>
+</div>
+
 
