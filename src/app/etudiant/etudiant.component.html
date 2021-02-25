@@ -1,0 +1,13 @@
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Dureé</th>
+  </tr>
+  <tr *ngFor="let f of listFormations['_embedded']['formations']">
+    <td>{{f.id}}</td>
+    <td>{{f.nom}}</td>
+    <td>{{f.duree}}</td>
+  </tr>
+</table>
+
